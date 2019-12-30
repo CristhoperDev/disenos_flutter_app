@@ -83,7 +83,7 @@ class BasicPage extends StatelessWidget {
   Widget _createText() {
     return SafeArea(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30.0),
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
         child: Text(
           'Sed fermentum sem nec commodo sagittis. Donec tincidunt elit libero, eget posuere elit sodales ac. In hac habitasse platea dictumst. Integer aliquam justo lorem, sit amet lobortis mi pellentesque vel. Mauris nec sapien quis tellus finibus mattis. Ut ullamcorper turpis vel feugiat iaculis. Cras vestibulum nulla at enim vestibulum sollicitudin. Quisque posuere mattis nisi, sed venenatis arcu cursus et. Donec eget consequat tellus.',
           textAlign: TextAlign.justify,
