@@ -1,6 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+
+import 'dart:math';
+import 'dart:ui';
 
 class ButtonsPage extends StatelessWidget {
   @override
@@ -120,54 +121,59 @@ class ButtonsPage extends StatelessWidget {
       children: [
         TableRow(
           children: [
-            _createRoundedButton(),
-            _createRoundedButton(),
+            _createRoundedButton(Colors.blue, Icons.border_all, 'General'),
+            _createRoundedButton(Colors.purpleAccent, Icons.directions_bus, 'Bus'),
           ]
         ),
         TableRow(
           children: [
-            _createRoundedButton(),
-            _createRoundedButton(),
+            _createRoundedButton(Colors.pinkAccent, Icons.shop, 'Buy'),
+            _createRoundedButton(Colors.orange, Icons.insert_drive_file, 'File'),
           ]
         ),
         TableRow(
           children: [
-            _createRoundedButton(),
-            _createRoundedButton(),
+            _createRoundedButton(Colors.blueAccent, Icons.movie_filter, 'Entertaiment'),
+            _createRoundedButton(Colors.green, Icons.cloud, 'Grocery'),
           ]
         ),
         TableRow(
           children: [
-            _createRoundedButton(),
-            _createRoundedButton(),
+            _createRoundedButton(Colors.red, Icons.collections, 'Photos'),
+            _createRoundedButton(Colors.teal, Icons.help_outline, 'Help'),
           ]
         ),
       ],
     );
   }
 
-  Widget _createRoundedButton() {
-    return Container(
-      height: 180,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(20.0)
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          CircleAvatar(
-            backgroundColor: Colors.pinkAccent,
-            radius: 35.0,
-            child: Icon(
-              Icons.swap_calls,
-              color: Colors.white,
-              size: 30.0,
-            ),
+  Widget _createRoundedButton( Color color, IconData icon, String text  ) {
+    return ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        child: Container(
+          height: 180,
+          margin: EdgeInsets.all(15.0),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(62, 66, 107, 0.7),
+            borderRadius: BorderRadius.circular(20.0)
           ),
-          Text('Cosa', style: TextStyle(color: Colors.pinkAccent)),
-        ],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              CircleAvatar(
+                backgroundColor: color,
+                radius: 35.0,
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 30.0,
+                ),
+              ),
+              Text(text, style: TextStyle(color: color)),
+            ],
+          ),
+        ),
       ),
     );
   }
